@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", function() {
         option.value = sehir.SehirID;
         option.text = sehir.SehirAdi;
         ilSelect.appendChild(option);
+
+
       });
     })
     .catch(error => console.error(error));
@@ -24,8 +26,12 @@ document.addEventListener("DOMContentLoaded", function() {
     ilceSelect.innerHTML = '<option selected>Lütfen önce bir il seçin...</option>';
     ilceSelect.disabled = true;
 
+    console.log(ilSelect.selected);
+
+
     // İl seçiliyse, ilçeleri getir
     if (ilSelect.value !== '') {
+
       // İlçe seçeneklerini API'den getiriyoruz
       fetch(ilceUrl)
         .then(response => response.json())
@@ -37,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function() {
               option.value = ilce.IlceID;
               option.text = ilce.IlceAdi;
               ilceSelect.appendChild(option);
-              console.log(ilceSelect);
             });
           }
 
@@ -56,8 +61,6 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch(namazUrl)
       .then(response => response.json())
       .then(data => {
-        console.log("vakitler");
-        console.log(namazUrl);
         // Namaz saatlerini gösteriyoruz
         const table = document.createElement('table');
         table.classList.add('table', 'table-striped', 'table-hover');
