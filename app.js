@@ -20,6 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
   ilSelect.addEventListener("change", () => {
     const ilceUrl = `https://ezanvakti.herokuapp.com/ilceler/${ilSelect.value}`;
 
+    const selectedCity = ilSelect.options[ilSelect.selectedIndex].text;
+    const secilenSehir = document.getElementById("secilen-sehir");
+    secilenSehir.innerHTML = `Seçilen Şehir: ${selectedCity}`;
+
     // İlçe seçim alanını boşaltıyoruz
     ilceSelect.innerHTML =
       "<option selected>Lütfen bir ilçe seçin...</option>";
@@ -57,6 +61,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // Namaz saatlerini getiriyoruz
   ilceSelect.addEventListener("change", () => {
     const namazUrl = `https://ezanvakti.herokuapp.com/vakitler?ilce=${ilceSelect.value}`;
+
+    const selectedSehir = ilceSelect.options[ilceSelect.selectedIndex].text;
+    const secilenSehir = document.getElementById("secilen-ilce");
+    secilenSehir.innerHTML = `Seçilen İlçe: ${selectedSehir}`;
 
     fetch(namazUrl)
       .then((response) => response.json())
