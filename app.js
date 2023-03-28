@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // İlçe seçim alanını boşaltıyoruz
     ilceSelect.innerHTML =
-      "<option selected>Lütfen önce bir il seçin...</option>";
+      "<option selected>Lütfen bir ilçe seçin...</option>";
     ilceSelect.disabled = true;
 
     console.log(ilSelect.selected);
